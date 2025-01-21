@@ -12,7 +12,7 @@ export default function M() {
         <MenuItem>
           <button
             onClick={showSettingsDialog}
-            className="block w-full text-left data-[focus]:bg-blue-100"
+            className="block bg-red-500 w-full text-left data-[focus]:bg-blue-100"
           >
             Settings
           </button>
