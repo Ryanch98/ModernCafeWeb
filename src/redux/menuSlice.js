@@ -1,0 +1,52 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  selectedcategory: "نوشیدنی",
+  menuItems: {
+    نوشیدنی: [
+      { id: 1, name: "قهوه ترک", price: 50000 },
+      { id: 2, name: "اسپرسو", price: 35000 },
+      { id: 3, name: " لته", price: 75000 },
+      { id: 4, name: " کاپوچینو", price: 75000 },
+      { id: 5, name: " موکا", price: 85000 },
+      { id: 6, name: " آمریکانو", price: 55000 },
+      { id: 7, name: " آیس لته", price: 80000 },
+      { id: 8, name: " آیس موکا", price: 80000 },
+      { id: 9, name: " چای سبز", price: 35000 },
+      { id: 10, name: " چای ماسالا", price: 45000 },
+    ],
+    غذاها: [
+      { id: 11, name: " پیتزا مخصوص ", price: 2800000 },
+      { id: 12, name: " پیتزا پپرونی ", price: 2600000 },
+      { id: 13, name: " پیتزا مخلوط ", price: 2500000 },
+      { id: 14, name: " پیتزا بیف ", price: 3400000 },
+      { id: 15, name: " پیتزا گوشت قارچ ", price: 260000 },
+      { id: 16, name: " پیتزا سبزیجات ", price: 190000 },
+      { id: 17, name: " پیتزا مرغ قارچ ", price: 240000 },
+      { id: 18, name: " پیتزا ایتالیایی ", price: 290000 },
+      { id: 19, name: " پیتزا آمریکایی ", price: 280000 },
+      { id: 20, name: " نان سیر ", price: 170000 },
+    ],
+    کیک: [
+      { id: 21, name: " کیک شکلاتی ", price: 95000 },
+      { id: 22, name: " کراسان شکلاتی ", price: 75000 },
+      { id: 23, name: " پن شکلاتی ", price: 88000 },
+      { id: 24, name: " رول دارچین ", price: 86000 },
+      { id: 25, name: " کوکی کشمشی ", price: 54000 },
+      { id: 26, name: " کوکی شکلاتی ", price: 54000 },
+    ],
+  },
+};
+
+const menuSlice = createSlice({
+  name: "menu",
+  initialState,
+  reducers: {
+    setCategory: (state, action) => {
+      state.selectedcategory = action.payload;
+    },
+  },
+});
+
+export const { setCategory } = menuSlice.actions;
+export default menuSlice.reducer;
