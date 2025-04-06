@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import img from "./images/logo.png";
 import Nazarat from "../Comments/nazarat";
 import Menu from "../menu";
 
@@ -35,22 +34,26 @@ export default function Home() {
       <div className="absolute top-0 left-0 w-screen h-screen bg-cover z-0">
         <img className="w-full h-full object-cover" src={Picture[pic]} />
       </div>
-      <div className="fixed top-0 w-full flex justify-between items-center px-6 mt-6">
+      <div className="fixed w-full flex justify-between items-center px-40 mt-5">
         <div className="flex justify-center items-center gap-1">
-          <div className="w-20 h-12 rounded-3xl bg-white shadow-sm shadow-gray-400 flex justify-center items-center">
-            <button className="text-gray-500">Sign in</button>
+          <div className="w-20 h-12 rounded-3xl  bg-white/10 backdrop-blur-sm flex justify-center items-center">
+            <button className="text-white">Sign in</button>
           </div>
-          <div className="w-10 h-10 rounded-full bg-white flex justify-center items-center">
-            <img className="ml-1 w-6 h-6" src="/pic/s.svg" alt="Search Icon" />
+          <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex justify-center items-center">
+            <img
+              className="ml-1 w-6 h-6 text-white"
+              src="/pic/s.svg"
+              alt="Search Icon"
+            />
           </div>
         </div>
 
-        <div className=" flex justify-center">
-          <img src={img} className="w-24 h-24 rounded-full" alt="Logo" />
+        <div className="flex justify-center w-44 bg-white/10 rounded-full">
+          <img src="/pic/logo.png" alt="Logo" />
         </div>
 
-        <div className="justify-center w-20 h-12 rounded-3xl bg-white shadow-sm shadow-gray-400 flex items-center">
-          <h1 className="text-gray-500">Abou Us</h1>
+        <div className="justify-center items-center flex w-20 h-12 rounded-3xl bg-white/10 backdrop-blur-sm">
+          <h1 className="text-white">Abou Us</h1>
         </div>
       </div>
 
@@ -58,13 +61,13 @@ export default function Home() {
         <Menu />
       </div>
 
-      <div className="absolute top-56 right-14">
+      <div className="absolute top-[40vh] right-14">
         <h1 className="text-2xl text-white">
-          ☕ قهوه تنها تلخیه که می‌تونه روزتو شیرین کنه kose nanash
+          ☕ قهوه تنها تلخیه که می‌تونه روزتو شیرین کنه
         </h1>
       </div>
 
-      <div className="absolute top-80 right-14">
+      <div className="absolute top-[47vh] right-14">
         <Nazarat nazarIndex={nazarIndex} />
       </div>
 
