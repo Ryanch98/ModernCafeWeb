@@ -1,4 +1,5 @@
 import Home from './Pages/home';
+import About from './Pages/about';
 import Category from './Pages/category';
 import Cart from './Pages/cart';
 import Layout from './Components/Layout';
@@ -12,6 +13,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/category/:name" element={<Category />} />
+          <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>

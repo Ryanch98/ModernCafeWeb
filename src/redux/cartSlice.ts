@@ -1,32 +1,57 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+interface CartItem {
+  id: string | number;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+}
+
+interface CartState {
+  items: CartItem[];
+}
+
+const initialState: CartState = {
   items: [],
 };
 
+/**
+ * Cart slice for managing shopping cart state
+ * Handles adding, removing, and updating cart items
+ */
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action) => {
+    /**
+     * Add item to cart or increment quantity if already exists
+     */
+    addToCart: (state, action: PayloadAction<Omit<CartItem, 'quantity'>>) => {
       const item = action.payload;
       const existingItem = state.items.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
         state.items.push({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          image: item.image || '/pic/logo.png',
+          ...item,
           quantity: 1,
         });
       }
     },
-    removeFromCart: (state, action) => {
+
+    /**
+     * Remove item from cart by id
+     */
+    removeFromCart: (state, action: PayloadAction<string | number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
-    updateQuantity: (state, action) => {
+
+    /**
+     * Update quantity of item in cart
+     * Removes item if quantity is 0 or less
+     */
+    updateQuantity: (state, action: PayloadAction<{ id: string | number; quantity: number }>) => {
       const { id, quantity } = action.payload;
       const item = state.items.find((cartItem) => cartItem.id === id);
       if (!item) return;
@@ -36,6 +61,10 @@ const cartSlice = createSlice({
         item.quantity = quantity;
       }
     },
+
+    /**
+     * Clear all items from cart
+     */
     clearCart: (state) => {
       state.items = [];
     },

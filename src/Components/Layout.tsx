@@ -5,21 +5,18 @@ import MenuCastum from './menu';
 import Footer from './footer';
 import LanguageSwitcher from './LanguageSwitcher';
 import SkeletonLoader from './SkeletonLoader';
-// import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-// import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-// import {
-//   ArchiveBoxXMarkIcon,
-//   ChevronDownIcon,
-//   PencilIcon,
-//   Square2StackIcon,
-//   TrashIcon,
-// } from '@heroicons/react/16/solid';
+import CoffeeAssistant from './CoffeeAssistant';
+import CoffeeAssistantButton from './CoffeeAssistantButton';
+import { useAppSelector } from '../redux/hooks';
+import type { Language } from '../constants/types';
 
 export default function Layout() {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [loading, setLoading] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showAssistant, setShowAssistant] = useState(false);
+  const language = useAppSelector((state) => state.language.lang) as Language;
 
   useEffect(() => {
     setLoading(true);
@@ -32,88 +29,8 @@ export default function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-slate-950 text-white">
-      <div className="fixed inset-x-3 top-3 z-30 block sm:hidden">
-        {/* Mobile menu */}
-        {/* {!isHome && (
-          <div className="flex justify-center">
-            <Menu as="div" className="relative">
-              <MenuButton className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-white shadow-lg shadow-black/30 backdrop-blur-xl transition hover:bg-slate-800/80">
-                {({ open }) => (
-                  <>
-                    {open ? <XMarkIcon className="h-5 w-5" /> : <Bars3Icon className="h-5 w-5" />}
-                    <span>{open ? 'Close' : 'Menu'}</span>
-                  </>
-                )}
-              </MenuButton>
-
-              <MenuItems className="absolute right-0 mt-2 w-56 origin-top-right rounded-2xl border border-white/10 bg-slate-900/95 p-2 text-sm text-white shadow-2xl shadow-black/40 backdrop-blur-xl focus:outline-none">
-                <MenuItem>
-                  {({ close }) => (
-                    <Link
-                      to="/"
-                      onClick={close}
-                      className="flex items-center justify-between rounded-xl px-3 py-2.5 transition hover:bg-white/10"
-                    >
-                      <span>Home</span>
-                      <span className="text-xs text-slate-400">↗</span>
-                    </Link>
-                  )}
-                </MenuItem>
-                <MenuItem>
-                  {({ close }) => (
-                    <Link
-                      to="/category/نوشیدنی ها"
-                      onClick={close}
-                      className="flex items-center justify-between rounded-xl px-3 py-2.5 transition hover:bg-white/10"
-                    >
-                      <span>Drinks</span>
-                      <span className="text-xs text-slate-400">↗</span>
-                    </Link>
-                  )}
-                </MenuItem>
-                <MenuItem>
-                  {({ close }) => (
-                    <Link
-                      to="/category/کیک"
-                      onClick={close}
-                      className="flex items-center justify-between rounded-xl px-3 py-2.5 transition hover:bg-white/10"
-                    >
-                      <span>Cakes</span>
-                      <span className="text-xs text-slate-400">↗</span>
-                    </Link>
-                  )}
-                </MenuItem>
-                <MenuItem>
-                  {({ close }) => (
-                    <Link
-                      to="/category/غذا"
-                      onClick={close}
-                      className="flex items-center justify-between rounded-xl px-3 py-2.5 transition hover:bg-white/10"
-                    >
-                      <span>Foods</span>
-                      <span className="text-xs text-slate-400">↗</span>
-                    </Link>
-                  )}
-                </MenuItem>
-                <div className="my-1 h-px bg-white/10" />
-                <MenuItem>
-                  {({ close }) => (
-                    <Link
-                      to="/cart"
-                      onClick={close}
-                      className="flex items-center justify-between rounded-xl bg-amber-400 px-3 py-2.5 font-semibold text-slate-950 transition hover:bg-amber-300"
-                    >
-                      <span>Cart</span>
-                      <span className="text-xs">↗</span>
-                    </Link>
-                  )}
-                </MenuItem>
-              </MenuItems>
-            </Menu>
-          </div>
-        )} */}
-      </div>
+    <div className="flex min-h-screen w-full max-w-full flex-col overflow-x-hidden bg-slate-950 text-white">
+      <div className="fixed inset-x-3 top-3 z-30 block sm:hidden"></div>
       <div className="fixed left-4 top-60 z-20 hidden lg:block">
         <MenuCastum />
       </div>
@@ -169,37 +86,37 @@ export default function Layout() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="rounded-xl bg-amber-400 px-3 py-2 text-sm font-semibold text-slate-950"
                   >
-                    Cart
+                    {language === 'fa' ? 'سبد خرید' : 'Cart'}
                   </Link>
                 </div>
-                <div className="grid gap-2">
+                <div className={`${language === 'fa' ? 'text-right' : 'text-left'} grid gap-2`}>
                   <Link
                     to="/"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="rounded-xl border border-white/10 px-3 py-2 text-sm text-white transition hover:bg-white/10"
+                    className={`${language === 'fa' ? 'text-right' : 'text-left'} rounded-xl border border-white/10 px-3 py-2 text-sm text-white transition hover:bg-white/10`}
                   >
-                    Home
+                    {language === 'fa' ? 'خانه' : 'Home'}
                   </Link>
                   <Link
-                    to="/category/نوشیدنی ها"
+                    to="/category/drinks"
                     onClick={() => setMobileMenuOpen(false)}
                     className="rounded-xl border border-white/10 px-3 py-2 text-sm text-white transition hover:bg-white/10"
                   >
-                    Drinks
+                    {language === 'fa' ? 'نوشیدنی‌ها' : 'Drinks'}
                   </Link>
                   <Link
-                    to="/category/کیک"
+                    to="/category/cakes"
                     onClick={() => setMobileMenuOpen(false)}
                     className="rounded-xl border border-white/10 px-3 py-2 text-sm text-white transition hover:bg-white/10"
                   >
-                    Cakes
+                    {language === 'fa' ? 'کیک‌ها' : 'Cakes'}
                   </Link>
                   <Link
-                    to="/category/غذا"
+                    to="/category/foods"
                     onClick={() => setMobileMenuOpen(false)}
                     className="rounded-xl border border-white/10 px-3 py-2 text-sm text-white transition hover:bg-white/10"
                   >
-                    Foods
+                    {language === 'fa' ? 'غذاها' : 'Foods'}
                   </Link>
                 </div>
               </div>
@@ -223,6 +140,14 @@ export default function Layout() {
       )}
 
       {!loading && <Footer />}
+
+      {/* Coffee Assistant */}
+      <CoffeeAssistantButton onClick={() => setShowAssistant(true)} language={language} />
+      <CoffeeAssistant
+        isOpen={showAssistant}
+        onClose={() => setShowAssistant(false)}
+        language={language}
+      />
     </div>
   );
 }

@@ -51,7 +51,7 @@ export default function CoffeeAnimation({ reverse, progress = 0, machineImage })
     <div
       className={`relative flex h-[280px] w-full items-center justify-center sm:h-[350px] lg:h-[500px] ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} `}
     >
-      {/* French Press */}
+      {/* Coffee Machine */}
       <motion.div
         style={{
           opacity: pressOpacity,
@@ -59,13 +59,17 @@ export default function CoffeeAnimation({ reverse, progress = 0, machineImage })
           transformOrigin: '4% 40%',
           scaleX: reverse ? -1 : 1,
         }}
-        className={`absolute -top-2 left-[135px] z-20 w-full sm:bottom-32 sm:left-[85px] sm:top-[70px] ${reverse ? 'left-[90px] sm:left-[49px]' : 'left-32 sm:left-12'}`}
+        className={`absolute -top-2 left-[135px] z-20 w-full sm:bottom-32 sm:left-[85px] sm:top-[70px] ${reverse ? 'left-[130px] sm:left-[56px]' : 'left-32 sm:left-12'}`}
       >
-        <img src={machineImage} alt="Coffee Maker" className="w-[130px] -rotate-12 sm:w-[200px]" />
+        <img
+          src={machineImage}
+          alt="Coffee Maker"
+          className="h-[130px] w-[130px] -rotate-12 object-contain sm:h-[200px] sm:w-[200px]"
+        />
       </motion.div>
 
       <motion.div
-        className={`${reverse ? 'left-[125px]' : 'left-[130px]'} absolute left-[130px] top-[40px] z-10 sm:left-[50px] sm:top-[135px] sm:w-auto`}
+        className={`${reverse ? 'left-[123px] sm:left-[50px] sm:top-[150px]' : 'left-[130px]'} absolute left-[130px] top-[40px] z-10 sm:left-[50px] sm:top-[135px] sm:w-auto`}
         style={{
           opacity: pressOpacity,
           transformOrigin: 'top center',

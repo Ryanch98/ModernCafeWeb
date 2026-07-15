@@ -49,7 +49,7 @@ const Category = () => {
                 <img
                   src={item.image}
                   className="mx-auto h-28 w-28 rounded-full border border-white/10 object-cover p-2 transition duration-300 group-hover:scale-105 sm:h-40 sm:w-40"
-                  alt={item.name}
+                  alt={typeof item.name === 'object' ? item.name.en : item.name}
                 />
                 <h2 className="font-semibold text-white sm:mt-6 sm:text-2xl">
                   {typeof item.name === 'object' ? item.name[language] : item.name}

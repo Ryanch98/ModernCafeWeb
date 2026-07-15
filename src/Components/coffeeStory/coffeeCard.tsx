@@ -75,14 +75,14 @@ export default function CoffeeCard({
           </h3>
           <div
             ref={descriptionRef}
-            className="leading-2 h-[30vh] overflow-y-auto rounded-md bg-slate-50 p-2 text-xs text-slate-700 sm:h-[430px] sm:rounded-3xl sm:border sm:border-slate-200/70 sm:p-6 sm:leading-8 sm:shadow-inner sm:shadow-slate-200/40"
+            className="leading-2 h-[30vh] overflow-y-auto rounded-md bg-slate-50 p-2 text-xs text-slate-700 sm:h-[430px] sm:rounded-3xl sm:border sm:border-slate-200/70 sm:p-6 sm:text-base sm:leading-8 sm:shadow-inner sm:shadow-slate-200/40"
             onScroll={handleScroll}
           >
             {description}
           </div>
         </div>
         <div className="flex w-full flex-row justify-between sm:w-[50%] sm:pt-0">
-          <button onClick={() => onReachEnd('prev')} className="flex w-10">
+          <button onClick={() => onReachEnd('prev')} className="z-50 flex w-10">
             <ArrowLeftCircleIcon />
           </button>
           <div className="relative flex w-full items-center justify-center lg:w-[45%]">
@@ -90,7 +90,7 @@ export default function CoffeeCard({
               <CoffeeAnimation reverse={reverse} progress={progress} machineImage={image} />
             </div>
           </div>
-          <button onClick={() => onReachEnd('next')} className="flex w-10">
+          <button onClick={() => onReachEnd('next')} className="z-50 flex w-10">
             <ArrowRightCircleIcon />
           </button>
         </div>

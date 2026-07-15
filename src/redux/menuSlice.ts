@@ -47,6 +47,7 @@ const initialState = {
             en: 'Espresso blended with steamed milk and a light layer of foam.',
           },
           image: '/pic/iteams/latte.png',
+          scale: 1,
         },
         {
           id: 4,

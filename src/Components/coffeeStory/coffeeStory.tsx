@@ -1,131 +1,42 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useAppSelector } from '../../redux/hooks';
+import { translations } from '../../redux/translations';
+import type { Language } from '../../constants/types';
 import CoffeeCard from './coffeeCard';
 
 type direction = 'next' | 'prev';
 
-const coffees = [
+type CoffeeDescriptionKey =
+  | 'frenchCoffeeDescription'
+  | 'TurkishCoffee'
+  | 'EspressoCoffeeDescription';
+
+type CoffeeData = {
+  title: string;
+  descriptionKey: CoffeeDescriptionKey;
+  reverse: boolean;
+  image: string;
+};
+
+const coffees: CoffeeData[] = [
   {
     title: 'French Coffee',
-    description:
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...' +
-      'French coffee is smooth and aromatic...',
-
+    descriptionKey: 'frenchCoffeeDescription',
     reverse: false,
     image: '/Pic/french.PNG',
   },
   {
     title: 'Turkish Coffee',
-    description:
-      'Turkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is oncoffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is oncoffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is oncoffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is oncoffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is oncoffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is oncoffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is on oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methodsTurkish coffee is one of the oldest brewing methods...',
+    descriptionKey: 'TurkishCoffee',
     image: '/Pic/turkish.PNG',
     reverse: true,
   },
   {
     title: 'Espresso',
-    description:
-      'Espresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinksEspresso is the base of many coffee drinks...',
-    reverse: false,
+    descriptionKey: 'EspressoCoffeeDescription',
     image: '/Pic/mocapot.png',
+    reverse: false,
   },
 ];
 
@@ -133,6 +44,7 @@ export default function CoffeeStory() {
   const [currentCard, setCurrentCard] = useState(0);
 
   const sectionRef = useRef(null);
+  const language = useAppSelector((state) => state.language.lang) as Language;
 
   const handlerChangeCoffee = (direction: direction) => {
     if (direction === 'next') {
@@ -160,7 +72,10 @@ export default function CoffeeStory() {
             <CoffeeCard
               key={currentCard}
               title={coffees[currentCard].title}
-              description={coffees[currentCard].description}
+              description={
+                translations[language][coffees[currentCard].descriptionKey] ??
+                translations[language].descriptionUnavailable
+              }
               reverse={coffees[currentCard].reverse}
               image={coffees[currentCard].image}
               onReachEnd={handlerChangeCoffee}

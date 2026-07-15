@@ -3,76 +3,81 @@ import { setCategory } from '../redux/menuSlice';
 import { useNavigate } from 'react-router-dom';
 import { translations } from '../redux/translations';
 import { HomeIcon } from '@heroicons/react/24/outline';
+import type { Language } from '../constants/types';
 
+interface MenuCategory {
+  id: string;
+  key: string;
+  label: keyof (typeof translations)['en'];
+  icon: string;
+  alt: string;
+}
+
+/**
+ * Side menu component for navigation
+ * Displays expandable menu with category and cart buttons
+ */
 export default function Menu() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const cartQuantity = useAppSelector((state) =>
     state.cart.items.reduce((sum, item) => sum + item.quantity, 0),
   );
-  const language = useAppSelector((state) => state.language.lang);
+  const language = useAppSelector((state) => state.language.lang) as Language;
   const t = translations[language];
 
-  const handleCategory = (Category) => {
-    dispatch(setCategory(Category));
-    navigate(`/category/${Category}`);
+  const categoryMenuItems: MenuCategory[] = [
+    { id: 'drinks', key: 'drinks', label: 'menuDrinks', icon: '/pic/coffee.svg', alt: 'Drinks' },
+    { id: 'cakes', key: 'cakes', label: 'menuCakes', icon: '/pic/cake.svg', alt: 'Cakes' },
+    { id: 'foods', key: 'foods', label: 'menuFoods', icon: '/pic/pizza.svg', alt: 'Foods' },
+  ];
+
+  const handleCategoryClick = (categoryKey: string) => {
+    dispatch(setCategory(categoryKey));
+    navigate(`/category/${categoryKey}`);
   };
 
-  const handleCart = () => {
+  const handleCartClick = () => {
     navigate('/cart');
   };
 
   return (
     <nav className="group flex h-[520px] w-auto flex-col items-start justify-evenly rounded-3xl bg-white/15 p-2 text-white shadow-2xl shadow-black/30 backdrop-blur-xl transition-all duration-500 hover:w-36 hover:px-3">
+      {/* Home Button */}
       <button
         onClick={() => navigate('/')}
         className="relative flex h-12 w-12 items-center justify-center rounded-2xl transition hover:bg-white/20"
+        aria-label={t.menuHome}
       >
-        <HomeIcon className="h-9 w-9 text-black/55" aria-label={t.menuHome} />
+        <HomeIcon className="h-9 w-9 text-black/55" />
         <span className="absolute left-14 hidden text-sm font-medium text-white group-hover:block">
           {t.menuHome}
         </span>
       </button>
-      <button
-        onClick={() => handleCategory('drinks')}
-        className="relative flex h-12 w-12 items-center justify-center rounded-2xl transition hover:bg-white/20"
-        aria-label={t.menuDrinks}
-      >
-        <img className="h-9 w-9" src="/pic/coffee.svg" alt={t.menuDrinks} />
-        <span className="absolute left-14 hidden text-sm font-medium text-white group-hover:block">
-          {t.menuDrinks}
-        </span>
-      </button>
 
-      <button
-        onClick={() => handleCategory('cakes')}
-        className="relative flex h-12 w-12 items-center justify-center rounded-2xl transition hover:bg-white/20"
-        aria-label={t.menuCakes}
-      >
-        <img className="h-8 w-8" src="/pic/cake.svg" alt={t.menuCakes} />
-        <span className="absolute left-14 hidden text-sm font-medium text-white group-hover:block">
-          {t.menuCakes}
-        </span>
-      </button>
+      {/* Category Buttons */}
+      {categoryMenuItems.map((item) => (
+        <button
+          key={item.id}
+          onClick={() => handleCategoryClick(item.key)}
+          className="relative flex h-12 w-12 items-center justify-center rounded-2xl transition hover:bg-white/20"
+          aria-label={t[item.label]}
+        >
+          <img className="h-9 w-9" src={item.icon} alt={item.alt} />
+          <span className="absolute left-14 hidden text-sm font-medium text-white group-hover:block">
+            {t[item.label]}
+          </span>
+        </button>
+      ))}
 
-      <button
-        onClick={() => handleCategory('foods')}
-        className="relative flex h-12 w-12 items-center justify-center rounded-2xl transition hover:bg-white/20"
-        aria-label={t.menuFoods}
-      >
-        <img className="h-9 w-9" src="/pic/pizza.svg" alt={t.menuFoods} />
-        <span className="absolute left-14 hidden text-sm font-medium text-white group-hover:block">
-          {t.menuFoods}
-        </span>
-      </button>
-
+      {/* Cart Button */}
       <button
         type="button"
-        onClick={handleCart}
+        onClick={handleCartClick}
         className="relative flex h-12 w-12 items-center justify-center rounded-2xl transition hover:bg-white/20"
         aria-label={t.menuCart}
       >
-        <img className="h-9 w-9" src="/pic/basket.svg" alt="Basket" />
+        <img className="h-9 w-9" src="/pic/basket.svg" alt="Cart" />
         {cartQuantity > 0 && (
           <span className="absolute -right-2 -top-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-amber-400 px-1 text-[10px] font-semibold text-slate-950">
             {cartQuantity}
