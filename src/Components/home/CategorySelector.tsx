@@ -1,4 +1,6 @@
-import type { CategoryMenuItem } from '../../constants/types';
+import type { CategoryMenuItem, Language } from '../../constants/types';
+import { useAppSelector } from '../../redux/hooks';
+import { translations } from '../../redux/translations';
 
 interface CategorySelectorProps {
   items: readonly CategoryMenuItem[];
@@ -11,6 +13,8 @@ export default function CategorySelector({
   selectedCategory,
   onSelectCategory,
 }: CategorySelectorProps) {
+  const language = useAppSelector((state) => state.language.lang) as Language;
+
   return (
     <div className="flex flex-row-reverse items-center justify-center gap-8 pt-4">
       {items.map((item) => {
@@ -32,7 +36,7 @@ export default function CategorySelector({
               src={item.pic}
               alt={item.name}
             />
-            <p className="mt-2 text-sm text-white">{item.name}</p>
+            <p className="mt-2 text-sm text-white">{translations[language][item.name]}</p>
           </button>
         );
       })}

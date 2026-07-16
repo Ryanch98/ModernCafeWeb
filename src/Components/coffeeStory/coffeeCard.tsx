@@ -2,6 +2,10 @@ import CoffeeAnimation from './coffeeAnimation';
 import { useRef, useState } from 'react';
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/outline';
 
+import { useAppSelector } from '../../redux/hooks';
+import { translations } from '../../redux/translations';
+import type { Language } from '../../constants/types';
+
 type Direction = 'next' | 'prev';
 
 interface CoffeeCardProps {
@@ -21,9 +25,7 @@ export default function CoffeeCard({
 }: CoffeeCardProps) {
   const descriptionRef = useRef(null);
   const [progress, setProgress] = useState(0);
-  // const trueCoffee = reverse;
-  // const [isSm, setIsSm] = useState(false);
-
+  const language = useAppSelector((state) => state.language.lang) as Language;
 
   const handleScroll = (e) => {
     const element = e.currentTarget;
@@ -34,34 +36,24 @@ export default function CoffeeCard({
     const p = maxScroll > 0 ? scrollTop / maxScroll : 0;
 
     setProgress(p);
-
-    // if (scrollTop >= maxScroll - 5) {
-    //   onReachEnd?.();
-    // }
   };
-
-  // useEffect(() => {
-  //   if (descriptionRef.current) {
-  //     descriptionRef.current.scrollTop = 0;
-  //   }
-  // }, [title]);
 
   return (
     <div className="flex h-screen w-full flex-col px-1 py-5 sm:gap-20">
       <div className="sticky top-5 flex w-full flex-col items-center gap-2 pt-2 text-center">
         <span className="rounded-full bg-amber-200/20 px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-amber-200">
-          Coffee Stories
+          {translations[language].title}
         </span>
 
-        <h2 className="text-3xl font-black text-white sm:text-4xl">Types of Coffee</h2>
+        <h2 className="text-3xl font-black text-white sm:text-4xl">
+          {translations[language].typeCoffee}
+        </h2>
 
         <p className="mt-4 max-w-3xl text-sm text-slate-300 sm:text-base">
-          Discover the aromas and rituals behind each coffee style through a smooth scroll story.
+          {translations[language].desCoffee}
         </p>
       </div>
-      {/* <div className="flex h-4 w-4 pt-40">
-        <button onClick={onReachEnd}>a</button>
-      </div> */}
+
       <div
         className={`flex w-full max-w-7xl flex-col gap-14 rounded-[34px] px-2 shadow-2xl shadow-slate-900/10 backdrop-blur-xl transition-all duration-500 sm:sticky sm:top-52 sm:flex-col sm:gap-8 sm:border sm:border-slate-200/30 sm:bg-white/90 sm:p-6 ${
           reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'

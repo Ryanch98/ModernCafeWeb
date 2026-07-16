@@ -5,10 +5,11 @@ import { translations } from '../redux/translations';
 import { HomeIcon } from '@heroicons/react/24/outline';
 import type { Language } from '../constants/types';
 
+type MenuLabel = 'menuDrinks' | 'menuCakes' | 'menuFoods' | 'menuCart' | 'menuHome';
 interface MenuCategory {
   id: string;
   key: string;
-  label: keyof (typeof translations)['en'];
+  label: MenuLabel;
   icon: string;
   alt: string;
 }

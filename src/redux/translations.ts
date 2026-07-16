@@ -17,13 +17,12 @@ export const translations = {
     footerPhone: '+1 (555) 123-4567',
     footerEmail: 'info@moderncafe.com',
     footerHours: 'Mon - Fri: 7 AM - 10 PM',
-
     footerFollowTitle: 'Follow Us',
-
     footerCopyright: '© 2024 Modern Cafe. All rights reserved.',
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
     sitemap: 'Sitemap',
+
     // Menu
     menuDrinks: 'Drinks',
     menuCakes: 'Cakes',
@@ -49,6 +48,7 @@ export const translations = {
     addToCartLabel: 'Add to cart',
     priceLabel: 'Price',
     noItemsAvailable: 'No items available in this category.',
+    // Coffee Card
     frenchCoffeeDescription: `The French Press was invented to create a simple and practical coffee experience.
 It allows drinkers to control brewing time and coffee strength easily.
 The metal filter allows more flavor compounds to pass into the cup.
@@ -172,7 +172,18 @@ Professional baristas carefully monitor every step of preparation.
 The cup temperature can also influence the drinking experience.
 A balanced espresso should have a pleasant aroma and clean finish.
 Espresso continues to be a symbol of modern coffee craftsmanship.`,
+
+    title: 'coffee stories',
+    typeCoffee: 'type of coffee',
+    desCoffee:
+      'Discover the aromas and rituals behind each coffee style through a smooth scroll story.',
+    coffeeNames: {
+      french: 'French Coffee',
+      turkish: 'Turkish Coffee',
+      Espresso: 'Espresso Coffee',
+    },
   },
+
   fa: {
     // Header
     signIn: 'ورود',
@@ -225,7 +236,7 @@ Espresso continues to be a symbol of modern coffee craftsmanship.`,
     priceLabel: 'قیمت',
     noItemsAvailable: 'هیچ آیتمی در این دسته وجود ندارد.',
 
-    // Coffee description
+    // Coffee Card
     frenchCoffeeDescription: `قهوه فرانسوی یکی از محبوب‌ترین روش‌های سنتی دم‌آوری قهوه است.
 این قهوه معمولاً با دستگاه فرنچ پرس آماده می‌شود.
 در این روش، آب داغ مستقیماً با قهوه آسیاب‌شده تماس دارد.
@@ -397,5 +408,14 @@ Espresso continues to be a symbol of modern coffee craftsmanship.`,
 فرهنگ اسپرسو در کافه‌های سراسر جهان گسترش پیدا کرده است.
 کشورهای مختلف سبک‌های خاص خود را در تهیه اسپرسو ایجاد کرده‌اند.
 اسپرسو همچنان نمادی از هنر، تخصص و مهارت در دنیای قهوه است.`,
+    title: 'داستان‌های قهوه',
+    typeCoffee: 'انواع قهوه',
+    desCoffee:
+      'رایحه‌ها و آیین‌های پشت هر سبک قهوه را از طریق یک داستان روان و اسکرول‌محور کشف کنید.',
+    coffeeNames: {
+      french: 'قهوه فرانسه',
+      turkish: 'قهوه ترک',
+      Espresso: 'قهوه اسپرسو ',
+    },
   },
 };

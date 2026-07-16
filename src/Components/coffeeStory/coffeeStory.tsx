@@ -19,32 +19,31 @@ type CoffeeData = {
   image: string;
 };
 
-const coffees: CoffeeData[] = [
-  {
-    title: 'French Coffee',
-    descriptionKey: 'frenchCoffeeDescription',
-    reverse: false,
-    image: '/pic/french.PNG',
-  },
-  {
-    title: 'Turkish Coffee',
-    descriptionKey: 'TurkishCoffee',
-    image: '/pic/turkish.PNG',
-    reverse: true,
-  },
-  {
-    title: 'Espresso',
-    descriptionKey: 'EspressoCoffeeDescription',
-    image: '/pic/mocapot.png',
-    reverse: false,
-  },
-];
-
 export default function CoffeeStory() {
+  const language = useAppSelector((state) => state.language.lang) as Language;
+  const coffees: CoffeeData[] = [
+    {
+      title: translations[language].coffeeNames.french,
+      descriptionKey: 'frenchCoffeeDescription',
+      reverse: false,
+      image: '/pic/french.png',
+    },
+    {
+      title: translations[language].coffeeNames.turkish,
+      descriptionKey: 'TurkishCoffee',
+      image: '/pic/turkish.png',
+      reverse: true,
+    },
+    {
+      title: translations[language].coffeeNames.Espresso,
+      descriptionKey: 'EspressoCoffeeDescription',
+      image: '/pic/mocapot.png',
+      reverse: false,
+    },
+  ];
   const [currentCard, setCurrentCard] = useState(0);
 
   const sectionRef = useRef(null);
-  const language = useAppSelector((state) => state.language.lang) as Language;
 
   const handlerChangeCoffee = (direction: direction) => {
     if (direction === 'next') {

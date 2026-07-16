@@ -1,7 +1,7 @@
 // Type definitions for the application
 export interface CategoryMenuItem {
   pic: string;
-  name: string;
+  name: 'menuDrinks' | 'menuFoods' | 'menuCakes';
   key: string;
 }
 

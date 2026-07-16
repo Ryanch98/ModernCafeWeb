@@ -11,17 +11,17 @@ export const HOME_CAROUSEL_IMAGES = [
 export const HOME_CATEGORY_MENU = [
   {
     pic: 'pic/croissant.png',
-    name: 'Cakes',
+    name: 'menuCakes',
     key: 'cakes',
   },
   {
     pic: 'pic/iteams/pizza/pz1.png',
-    name: 'Pizza',
+    name: 'menuFoods',
     key: 'foods',
   },
   {
     pic: 'pic/iteams/capo.png',
-    name: 'Coffee',
+    name: 'menuDrinks',
     key: 'drinks',
   },
 ] as const;
