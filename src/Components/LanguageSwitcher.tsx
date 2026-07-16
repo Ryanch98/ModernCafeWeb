@@ -34,7 +34,7 @@ export default function LanguageSwitcher() {
       aria-label="Toggle language"
     >
       <span className="text-lg">
-        <img src={`/Pic/${languageInfo.flag}.png`} alt={currentLanguage} className="h-6 w-6" />
+        <img src={`/pic/${languageInfo.flag}.png`} alt={currentLanguage} className="h-6 w-6" />
       </span>
       <span className="text-sm font-medium text-white">{languageInfo.label}</span>
     </button>

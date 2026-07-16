@@ -160,7 +160,7 @@ export default function CoffeeAnimation({ reverse, progress = 0, machineImage })
               : 'scale-150 sm:translate-y-[-70px]'
           }`}
         >
-          <img src="/Pic/cup.png" alt="Cup" className="w-[200px]" />
+          <img src="/pic/cup.png" alt="Cup" className="w-[200px]" />
 
           <motion.div
             className="absolute left-[24px] top-[24px] h-[12px] w-[50px] bg-[#4c2f1d] sm:left-[54px] sm:top-[48px] sm:h-[20px] sm:w-[90px]"

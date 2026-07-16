@@ -24,18 +24,18 @@ const coffees: CoffeeData[] = [
     title: 'French Coffee',
     descriptionKey: 'frenchCoffeeDescription',
     reverse: false,
-    image: '/Pic/french.PNG',
+    image: '/pic/french.PNG',
   },
   {
     title: 'Turkish Coffee',
     descriptionKey: 'TurkishCoffee',
-    image: '/Pic/turkish.PNG',
+    image: '/pic/turkish.PNG',
     reverse: true,
   },
   {
     title: 'Espresso',
     descriptionKey: 'EspressoCoffeeDescription',
-    image: '/Pic/mocapot.png',
+    image: '/pic/mocapot.png',
     reverse: false,
   },
 ];
