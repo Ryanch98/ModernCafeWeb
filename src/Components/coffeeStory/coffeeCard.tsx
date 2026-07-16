@@ -24,8 +24,6 @@ export default function CoffeeCard({
   // const trueCoffee = reverse;
   // const [isSm, setIsSm] = useState(false);
 
-  // @ts-ignore
-  const p = onReachEnd;
 
   const handleScroll = (e) => {
     const element = e.currentTarget;
