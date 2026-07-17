@@ -71,8 +71,8 @@ export default function CoffeeCard({
             {description}
           </div>
         </div>
-        <div className="flex w-full flex-row justify-between sm:w-[50%] sm:pt-0">
-          <button onClick={() => onReachEnd('prev')} className="z-50 flex w-10">
+        <div className="flex w-full flex-row items-center justify-between sm:w-[50%] sm:pt-0">
+          <button onClick={() => onReachEnd('prev')} className="z-50 flex h-10 w-10">
             <ArrowLeftCircleIcon />
           </button>
           <div className="relative flex w-full items-center justify-center lg:w-[45%]">
@@ -80,7 +80,7 @@ export default function CoffeeCard({
               <CoffeeAnimation reverse={reverse} progress={progress} machineImage={image} />
             </div>
           </div>
-          <button onClick={() => onReachEnd('next')} className="z-50 flex w-10">
+          <button onClick={() => onReachEnd('next')} className="z-50 flex h-10 w-10">
             <ArrowRightCircleIcon />
           </button>
         </div>
