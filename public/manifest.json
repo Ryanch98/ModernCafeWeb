@@ -3,12 +3,12 @@
   "name": "Ryan's Cafe App",
   "icons": [
     {
-      "src": "/pic/turk.png",
+      "src": "/pic/pwaLogo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/pic/turk.png",
+      "src": "/pic/pwaLogo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
