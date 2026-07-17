@@ -29,7 +29,7 @@ export default function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-[100vh] w-full max-w-full flex-col overflow-x-hidden bg-slate-950 text-white">
+    <div className="mt-0 flex min-h-[100vh] w-full max-w-full flex-col overflow-x-hidden bg-slate-950 text-white">
       <div className="fixed inset-x-3 top-3 z-30 block sm:hidden"></div>
       <div className="fixed left-4 top-60 z-20 hidden lg:block">
         <MenuCastum />
