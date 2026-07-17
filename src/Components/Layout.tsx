@@ -29,8 +29,13 @@ export default function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen w-full max-w-full flex-col overflow-x-hidden bg-slate-950 text-white">
-      <div className="fixed inset-x-3 top-3 z-30 block sm:hidden"></div>
+    <div
+      className="flex min-h-screen w-full max-w-full flex-col overflow-x-hidden bg-slate-950 text-white"
+      style={{
+        paddingTop: 'env(safe-area-inset-top)',
+        paddingBottom: 'env(safe-area-inset-bottom)',
+      }}
+    >
       <div className="fixed left-4 top-60 z-20 hidden lg:block">
         <MenuCastum />
       </div>

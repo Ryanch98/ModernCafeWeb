@@ -16,7 +16,7 @@ export default function CategorySelector({
   const language = useAppSelector((state) => state.language.lang) as Language;
 
   return (
-    <div className="flex flex-row-reverse items-center justify-center gap-8 pt-4">
+    <div className="flex flex-row-reverse items-center justify-center gap-8 pt-6 sm:gap-12">
       {items.map((item) => {
         const isSelected = selectedCategory === item.key;
 
