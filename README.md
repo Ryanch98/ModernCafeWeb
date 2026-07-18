@@ -17,6 +17,7 @@ https://github.com/Ryanch98/ryan-cafe
 - 🤖 AI coffee assistant for customer questions
 - 🛒 Shopping cart with Redux Toolkit state management
 - 📱 Fully responsive design for all screen sizes
+- 📲 Progressive Web App (PWA) support for installable experience
 - 🌍 Multi-language support
 - 🍵 Interactive menu with category filtering
 - 🎨 Smooth animations using Framer Motion
