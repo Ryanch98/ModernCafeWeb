@@ -1,81 +1,95 @@
-# ModernCafeWeb
+# RyanCafe
 
-A modern and responsive website for a coffee shop built using React and Tailwind CSS.
+A modern coffee shop frontend application built with React, TypeScript, Tailwind CSS, and Redux Toolkit.
 
-## Demo
+## 🌐 Live Demo
 
-You can preview the live version here: [ModernCafeWeb Demo](https://github.com/Ryanch98/ModernCafeWeb)
+☕ Visit the deployed version:
+[Ryan Cafe](https://ryan-cafe.vercel.app)
+
+## 💻 Source Code
+
+https://github.com/Ryanch98/ryan-cafe
 
 ## Features
 
-- Responsive and mobile-friendly design
-- Built with React and Tailwind CSS
-- Clean, minimal UI
-- Modular and maintainable codebase
-- Ready for deployment
+- ☕ Modern coffee shop landing page
+- 🤖 AI coffee assistant for customer questions
+- 🛒 Shopping cart with Redux Toolkit state management
+- 📱 Fully responsive design for all screen sizes
+- 🌍 Multi-language support
+- 🍵 Interactive menu with category filtering
+- 🎨 Smooth animations using Framer Motion
+
+## 📸 Screenshots
+
+### Home Page
+
+![Home Page](./screenshots/home.png)
+
+### Menu
+
+![Menu](./screenshots/menu.png)
+
+### Shopping Cart
+
+![Cart](./screenshots/cart.png)
 
 ## Technologies Used
 
-- React (Create React App)
+- React
+- TypeScript
 - Tailwind CSS
-- JavaScript (ES6+)
-- HTML5 & CSS3
+- Redux Toolkit
+- React Router DOM
+- Framer Motion
+- Swiper
 
 ## Getting Started
 
 ### Prerequisites
 
-Make sure you have `node` and `npm` installed on your machine.
+Make sure you have Node.js and Yarn installed.
+
+````bash
+node -v
+yarn -v
+
+### Install
 
 ```bash
-node -v
-npm -v
-
-Installation
-
-1. Clone the repository:
-
-
-
 git clone https://github.com/Ryanch98/ModernCafeWeb.git
+cd ModernCafeWeb
+yarn install
+````
 
-2. Navigate to the project directory:
+### Run locally
 
+```bash
+yarn start
+```
 
+Open http://localhost:3000 to view the app in your browser.
 
-cd coffee-app
+### Build for production
 
-3. Install dependencies:
+```bash
+yarn build
+```
 
+## Project Structure
 
+- `public/` — static HTML and manifest files
+- `src/` — main React application source
+- `src/Components/` — reusable UI components
+- `src/Pages/` — page views and routes
+- `src/redux/` — app state, slices, and store
+- `src/utils/` — utility helpers
+- `src/hooks/` — custom React hooks
+- `src/constants/` — constant values and translations
+- `src/services/` — app services and assistant logic
+- `tailwind.config.js` — Tailwind CSS configuration
 
-npm install
+## License
 
-4. Start the development server:
-
-
-
-npm start
-
-The app will be running at http://localhost:3000
-
-Build for Production
-
-npm run build
-
-Folder Structure
-
-/src: React components and assets
-
-/public: Static files
-
-tailwind.config.js: Tailwind configuration
-
-
-Screenshots
-
-You can add screenshots here to show the UI.
-
-License
-
-This project is open-source and available under the MIT License
+This project is open-source and available under the MIT License.

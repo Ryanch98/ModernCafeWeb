@@ -48,6 +48,7 @@ export const translations = {
     addToCartLabel: 'Add to cart',
     priceLabel: 'Price',
     noItemsAvailable: 'No items available in this category.',
+    deleteItemLabel: 'Delete item',
     // Coffee Card
     frenchCoffeeDescription: `The French Press was invented to create a simple and practical coffee experience.
 It allows drinkers to control brewing time and coffee strength easily.
@@ -235,6 +236,7 @@ Espresso continues to be a symbol of modern coffee craftsmanship.`,
     addToCartLabel: 'افزودن به سبد',
     priceLabel: 'قیمت',
     noItemsAvailable: 'هیچ آیتمی در این دسته وجود ندارد.',
+    deleteItemLabel: 'حذف',
 
     // Coffee Card
     frenchCoffeeDescription: `قهوه فرانسوی یکی از محبوب‌ترین روش‌های سنتی دم‌آوری قهوه است.

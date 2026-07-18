@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { Link } from 'react-router-dom';
 import { clearCart, removeFromCart, updateQuantity } from '../redux/cartSlice';
-
 import { translations } from '../redux/translations';
 import formatPrice from '../utils/formatPrice';
 
@@ -86,7 +85,7 @@ export default function Cart() {
                           onClick={() => dispatch(removeFromCart(item.id))}
                           className="w-full rounded-full bg-red-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-400 sm:w-auto"
                         >
-                          حذف
+                          {t.deleteItemLabel}
                         </button>
                       </div>
 
