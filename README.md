@@ -26,14 +26,12 @@ https://github.com/Ryanch98/ryan-cafe
 ### Home Page
 
 ![Home Page](./screenshots/home.png)
-
-### Menu
-
-![Menu](./screenshots/menu.png)
+![Home Page(sm)](./screenshots/home-sm.png)
 
 ### Shopping Cart
 
 ![Cart](./screenshots/cart.png)
+![MenCart(sm)](./screenshots/cart-sm.png)
 
 ## Technologies Used
 
